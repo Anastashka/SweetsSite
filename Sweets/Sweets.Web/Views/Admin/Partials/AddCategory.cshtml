@@ -1,0 +1,36 @@
+﻿
+@model Sweets.Web.Models.CategoryListModel
+
+
+
+    <div class="panel-success">
+        <div class="panel-heading text-center">
+            <h4>Категории</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(ViewBag.Sent))
+        {
+            <div>@ViewBag.Sent</div>
+        }
+        <div class="panel-body">
+            @*@using (Html.BeginForm())
+            {*@
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    <label>Название категории</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                </div>
+
+                @*<div class="text-center">
+                    <input type="submit" value="Добавить" class="btn btn-success" />
+                    @Html.ActionLink("Назад", "Index")
+                </div>*@
+            @*}*@
+        </div>
+    </div>
+
+
+
+
+
+
+

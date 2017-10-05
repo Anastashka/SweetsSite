@@ -1,0 +1,20 @@
+﻿@model List<Sweets.Web.Models.CategoryListModel>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+    </tr>
+    @foreach (var category in Model)
+            {
+        <tr>
+            <td>@category.Id</td>
+            <td>@category.Name</td>
+            <td><button name="editCategory" id="editCategory" type="submit" value="@category.Id">Изменить</button></td>
+            <td><button name="deleteCategory" id="deleteCategory" type="submit" value="@category.Id">Удалить</button></td>
+        </tr>
+        
+        
+    }
+</table>
+

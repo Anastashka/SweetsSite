@@ -1,0 +1,65 @@
+﻿@using Sweets.Web.Models
+@model List<CategoryListModel>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: #F1F1F1;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        @using (Ajax.BeginForm("ExecuteCommand", new AjaxOptions { UpdateTargetId = "categoryList" }))
+        {
+            <div id="categoryList">
+                @Html.Partial("AdminCategoryList", Model)
+            </div>
+        }
+        <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Добавить</button>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-body">
+                    @using (Ajax.BeginForm("AddCategoryList", new AjaxOptions { UpdateTargetId = "categoryList" }))
+
+                    {
+                        @Html.Partial("AddCategory", new CategoryListModel())
+
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            <input type="submit" value="Добавить" class="btn btn-success" />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            @*<div class="btn btn-success">
+                    @Html.ActionLink("Добавить", "AddCategoryList")
+                </div>*@
+
+
+
+        </div>
+    </div>
+
+
+</body>
+</html>
